@@ -1,0 +1,11 @@
+<% volume_name = "Volume#{@index+1}" %>
+    "<%= volume_name %>": {
+      "Type": "AWS::EC2::Volume",
+      "Properties": {
+        "AvailabilityZone": {
+          "Ref": "AZ"
+        },
+        "VolumeType": "<%= @volume[:type] %>",
+        "Size": "<%= @volume[:size] %>"
+      }
+    },

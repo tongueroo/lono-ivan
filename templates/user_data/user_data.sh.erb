@@ -1,0 +1,10 @@
+#!/bin/bash -lexv
+
+<% volumes = @volumes || [] %>
+# printing out volume info so you know that volume info is all available in user_data
+# throw your mounting logic in here
+<% volumes.each_with_index do |volume, index|
+  %w[device size type mount_point].each do |attribute| %>
+    <%= "#{attribute}: #{volume[attribute.to_sym]}" %>
+<% end
+  end %>

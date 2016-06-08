@@ -1,0 +1,18 @@
+<% volumes = @volumes || [] %>
+
+<% unless volumes.empty? %>
+"Volumes" : [
+<% end %>
+
+  <%
+  volumes.each_with_index do |volume, index|
+    volume_name = "Volume#{index + 1}"
+    last_volume = index == volumes.size - 1
+  %>
+     { "VolumeId" : { "Ref" : "<%= volume_name %>" }, "Device" : "<%= volume[:device] %>" }<%= ',' unless last_volume %>
+  <% end # each %>
+
+
+<% unless volumes.empty? %>
+],
+<% end %>
